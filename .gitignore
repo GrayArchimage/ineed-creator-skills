@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__/
+dist/
+.godot/
+*.ineed-backup
+ineed-integration-report.json
