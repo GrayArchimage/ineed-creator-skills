@@ -9,6 +9,9 @@ var previous_mute := false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	var ui_theme := Theme.new()
+	ui_theme.default_font = load("res://assets/fonts/ineed-cjk.woff2")
+	theme = ui_theme
 	rows = VBoxContainer.new()
 	rows.position = Vector2(20, 20)
 	add_child(rows)

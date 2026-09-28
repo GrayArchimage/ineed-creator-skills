@@ -1,3 +1,10 @@
+# 0.1.1 — 2026-09-28 (preview)
+
+- Bundle an OFL-licensed CJK font for the minimal Godot example so Chinese product names and nicknames render without relying on system fonts.
+- Document font coverage and package-size checks for native game UI.
+
+Compatibility: protocol v1, plugin 0.1.0 and all API/error/payment/reward/storage semantics are unchanged. Existing game ZIPs do not need this skill/example update. v0.1.0 remains available.
+
 # 0.1.0 — 2026-09-28 (preview)
 
 - Single creator skill entry routes to web, Godot and capability skills.
