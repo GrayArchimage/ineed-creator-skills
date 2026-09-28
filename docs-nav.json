@@ -22,6 +22,12 @@
           "title": "AI 总入口",
           "source": "SKILL.md",
           "description": "交给创作者 AI 的入口技能。"
+        },
+        {
+          "slug": "platform-handoff",
+          "title": "与 iNeed 沟通",
+          "source": "skills/platform-handoff/SKILL.md",
+          "description": "商品、登录位置、排行榜及界面分工的配置交接单。"
         }
       ]
     },

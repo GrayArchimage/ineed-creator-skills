@@ -1,3 +1,7 @@
+# v0.1.3
+
+新增“与 iNeed 沟通”分类、配置交接单和入口验收要求，总入口与引擎技能显式路由。SDK 0.1.0、协议 v1 和旧页面路径不变。兼容结论：仅新增说明和相对引用，不改变既有 API、默认值、存档与支付/奖励语义。
+
 # 0.1.1 — 2026-09-28 (preview)
 
 - Bundle an OFL-licensed CJK font for the minimal Godot example so Chinese product names and nicknames render without relying on system fonts.

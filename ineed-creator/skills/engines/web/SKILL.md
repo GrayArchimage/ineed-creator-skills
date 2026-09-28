@@ -7,3 +7,7 @@ description: 接入普通静态网页的 iNeed 平台能力。
 平台注入 `window.INeedHost`，不重复加载业务 SDK。`const result = await INeedHost.request("login", {})`；先 `request("hello",{protocols:[1]})` 再 `supports("payments.buy")`。既有 `window.iNeed` 接口保留。
 
 数据模式使用返回结果渲染游戏 UI；平台模式调用 `ui.store`、`ui.leaderboard`。统一返回 envelope，错误必须展示或可重试；支付/奖励不能客户端假造。订阅 `INeedHost.subscribe(callback)` 获取 JSON 文本事件，结束时调用 unsubscribe。
+
+## 交付给平台
+
+按 [与 iNeed 沟通](../../platform-handoff/SKILL.md) 输出配置交接单和实际入口测试步骤。标识尚未绑定时明确列为待办；平台配置不自动补写游戏事件。
