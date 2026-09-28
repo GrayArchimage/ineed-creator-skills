@@ -1,5 +1,5 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.2",
   "status": "preview",
   "protocol": {
     "major": 1,
@@ -29,6 +29,10 @@
   "limits": {
     "storedBytes": 52428800,
     "godotExpandedBytes": 134217728,
-    "cloudSaveBytes": 1048576
+    "cloudSaveBytes": 1048576,
+    "storedFileBytes": 52428800,
+    "maxFiles": 500,
+    "godotExpandedFileBytes": 134217728,
+    "maxPathCharacters": 240
   }
 }

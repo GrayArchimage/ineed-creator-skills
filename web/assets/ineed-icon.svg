@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="iNeed icon">
+  <rect width="512" height="512" fill="none" />
+  <path
+    d="M74 360V154C74 94 102 66 162 66H357C414 66 438 90 447 139"
+    fill="none"
+    stroke="#111715"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="20"
+  />
+  <path
+    d="M74 360C74 420 102 446 162 446H357C414 446 438 422 447 373"
+    fill="none"
+    stroke="#111715"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="20"
+  />
+  <path d="M443 150V362" fill="none" stroke="#ff5a1f" stroke-linecap="round" stroke-width="18" />
+  <text
+    x="256"
+    y="287"
+    fill="#111715"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="184"
+    font-weight="900"
+    letter-spacing="-14"
+    text-anchor="middle"
+  >iN</text>
+</svg>

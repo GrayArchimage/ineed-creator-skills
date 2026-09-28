@@ -4,3 +4,8 @@ dist/
 .godot/
 *.ineed-backup
 ineed-integration-report.json
+
+.docs-venv/
+site/
+
+design/evidence/

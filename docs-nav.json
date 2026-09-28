@@ -1,0 +1,157 @@
+{
+  "baseUrl": "https://ineeds.club/creator-skills/",
+  "repository": "https://github.com/GrayArchimage/ineed-creator-skills",
+  "groups": [
+    {
+      "title": "开始使用",
+      "pages": [
+        {
+          "slug": "index",
+          "title": "文档首页",
+          "source": "guides/overview.md",
+          "description": "按工程和任务找到需要的接入资料。"
+        },
+        {
+          "slug": "getting-started",
+          "title": "快速开始",
+          "source": "guides/getting-started.md",
+          "description": "从识别项目到导出验证。"
+        },
+        {
+          "slug": "creator-skill",
+          "title": "AI 总入口",
+          "source": "SKILL.md",
+          "description": "交给创作者 AI 的入口技能。"
+        }
+      ]
+    },
+    {
+      "title": "引擎接入",
+      "pages": [
+        {
+          "slug": "web",
+          "title": "Web 静态网页",
+          "source": "skills/engines/web/SKILL.md",
+          "description": "普通网页和静态构建产物。"
+        },
+        {
+          "slug": "godot",
+          "title": "Godot 单线程 Web",
+          "source": "skills/engines/godot/SKILL.md",
+          "description": "GDScript 插件、事件绑定与导出。"
+        }
+      ]
+    },
+    {
+      "title": "平台能力",
+      "pages": [
+        {
+          "slug": "login",
+          "title": "登录与账号",
+          "source": "skills/capabilities/login/SKILL.md",
+          "description": "匿名进入、登录恢复与账号隔离。"
+        },
+        {
+          "slug": "payments",
+          "title": "支付与权益",
+          "source": "skills/capabilities/payments/SKILL.md",
+          "description": "商品、库存、消费及可信付款。"
+        },
+        {
+          "slug": "leaderboards",
+          "title": "排行榜",
+          "source": "skills/capabilities/leaderboards/SKILL.md",
+          "description": "真实结算、冻结成绩和重试。"
+        },
+        {
+          "slug": "rewarded-ads",
+          "title": "激励广告",
+          "source": "skills/capabilities/rewarded-ads/SKILL.md",
+          "description": "完成验证、一次性结算和去重。"
+        },
+        {
+          "slug": "storage",
+          "title": "云存档",
+          "source": "skills/capabilities/storage/SKILL.md",
+          "description": "1 MiB、版本冲突和游客隔离。"
+        }
+      ]
+    },
+    {
+      "title": "打包与导出",
+      "pages": [
+        {
+          "slug": "packaging",
+          "title": "打包 Skill",
+          "source": "skills/packaging/SKILL.md",
+          "description": "AI 打包及产物审核入口。"
+        },
+        {
+          "slug": "structure",
+          "title": "ZIP 结构与路径",
+          "source": "guides/packaging/structure.md",
+          "description": "入口、引用、辅助文件与源工程。"
+        },
+        {
+          "slug": "formats",
+          "title": "支持文件类型",
+          "source": "guides/packaging/formats.md",
+          "description": "分类白名单与 Godot 压缩资源。"
+        },
+        {
+          "slug": "limits",
+          "title": "容量与数量",
+          "source": "guides/packaging/limits.md",
+          "description": "存储、解码和路径的独立限制。"
+        },
+        {
+          "slug": "compression",
+          "title": "压缩要求",
+          "source": "guides/packaging/compression.md",
+          "description": "ZIP、gzip、Brotli 和响应头。"
+        },
+        {
+          "slug": "godot-export",
+          "title": "Godot 导出设置",
+          "source": "guides/packaging/godot-export.md",
+          "description": "模板、线程、渲染器与浏览器限制。"
+        },
+        {
+          "slug": "validation",
+          "title": "运行验收与资源访问",
+          "source": "guides/packaging/validation.md",
+          "description": "实际传输、缓存、重试及内容证据。"
+        },
+        {
+          "slug": "troubleshooting",
+          "title": "常见问题",
+          "source": "guides/packaging/troubleshooting.md",
+          "description": "上传、运行、账号与字体排查。"
+        }
+      ]
+    },
+    {
+      "title": "SDK 与维护",
+      "pages": [
+        {
+          "slug": "protocol",
+          "title": "协议 v1",
+          "source": "protocol-v1.md",
+          "description": "冻结的通信、错误和业务语义契约。"
+        },
+        {
+          "slug": "compatibility",
+          "title": "兼容性原则",
+          "source": "COMPATIBILITY.md",
+          "description": "旧游戏、旧插件和旧技能持续可用。"
+        },
+        {
+          "slug": "releases",
+          "title": "版本与下载",
+          "source": "guides/maintenance/releases.md",
+          "description": "独立版本、固定制品及维护流程。"
+        }
+      ]
+    }
+  ]
+}

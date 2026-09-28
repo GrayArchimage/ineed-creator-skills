@@ -1,0 +1,80 @@
+{
+  "verifiedAt": "2026-09-28",
+  "platformCommit": "e664ae38ba5f9a5613ac70001d028345661cf482",
+  "allowedExtensions": [
+    ".html",
+    ".css",
+    ".js",
+    ".mjs",
+    ".json",
+    ".webmanifest",
+    ".txt",
+    ".md",
+    ".xml",
+    ".svg",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".gif",
+    ".webp",
+    ".avif",
+    ".bmp",
+    ".ico",
+    ".wasm",
+    ".pck",
+    ".woff",
+    ".woff2",
+    ".ttf",
+    ".otf",
+    ".mp3",
+    ".wav",
+    ".ogg",
+    ".aac",
+    ".flac",
+    ".m4a",
+    ".mp4",
+    ".mov",
+    ".webm",
+    ".vtt",
+    ".gltf",
+    ".glb",
+    ".bin",
+    ".data",
+    ".pdf",
+    ".csv",
+    ".doc",
+    ".docx",
+    ".xls",
+    ".xlsx",
+    ".ppt",
+    ".pptx",
+    ".zip"
+  ],
+  "godotCompressionBases": [
+    ".wasm",
+    ".pck",
+    ".js"
+  ],
+  "godotCompressionSuffixes": [
+    ".gz",
+    ".br"
+  ],
+  "godotDetection": [
+    ".pck",
+    ".pck.gz",
+    ".pck.br"
+  ],
+  "limits": {
+    "archiveBytes": 52428800,
+    "storedBytes": 52428800,
+    "storedFileBytes": 52428800,
+    "maxFiles": 500,
+    "godotDecodedBytes": 134217728,
+    "godotDecodedFileBytes": 134217728,
+    "maxPathCharacters": 240
+  },
+  "zipMethods": [
+    0,
+    8
+  ]
+}
