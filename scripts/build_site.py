@@ -43,6 +43,10 @@ for i,p in enumerate(pages):
  raw=(SOURCE/p['source']).read_text();clean=re.sub(r'\A---\n.*?\n---\n','',raw,flags=re.S)
  md=markdown.Markdown(extensions=['tables','fenced_code','toc'],extension_configs={'toc':{'toc_depth':'2-3','slugify':slugify_unicode}})
  body=rewrite(md.convert(clean),p['source']);body=re.sub(r'(<table>.*?</table>)',r'<div class="table-wrap">\1</div>',body,flags=re.S)
+ # Preserve public deep links after clearer page titles replace old headings.
+ for alias in {'login': ['登录'], 'payments': ['支付']}.get(p['slug'], []):
+  if 'id="'+alias+'"' not in body:
+   body='<span id="'+alias+'" aria-hidden="true"></span>'+body
  if p['slug']=='index':
   action=f'<div class="actions"><a class="button primary" href="getting-started.html">开始接入 <span aria-hidden="true">&nbsp;↗</span></a><a class="button" href="downloads/ineed-creator-markdown.zip" download>下载 Markdown ZIP</a></div>'
   body=body.replace('</p>','</p>'+action,1)

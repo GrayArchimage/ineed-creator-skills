@@ -31,6 +31,8 @@ for path,page in pages.items():
   assert target.is_relative_to(site),ref
   assert target.exists(),(path.name,ref)
   if u.fragment and target in pages:assert unquote(u.fragment) in pages[target].ids,(path.name,ref)
+for name,anchor in [('login.html','登录'),('payments.html','支付')]:
+ assert anchor in pages[(site/name).resolve()].ids, 'Legacy document deep link must remain reachable'
 nav=json.loads((root/'docs-nav.json').read_text())
 for group in nav['groups']:
  for p in group['pages']:
