@@ -7,6 +7,19 @@
 - [Web 静态网页](../skills/engines/web/SKILL.md)：静态生产包、平台数据与界面接入。
 - [Godot 单线程 Web](../skills/engines/godot/SKILL.md)：Godot 4.3+ / GDScript / Compatibility，插件与事件绑定。
 
+## 按开发阶段找到答案
+
+| 阶段 | 文档 | 可以直接得到什么 |
+|---|---|---|
+| 判断范围 | [支持能力](integration/support.md) | 已有方法、平台前提、暂不支持的能力 |
+| 开始接入 | [完整开发流程](integration/workflow.md) | 工程检查、提问清单、代码和配置分工 |
+| 编写代码 | [Godot 接口手册](integration/api.md) | 函数、参数、返回值和数据读取位置 |
+| 做好交互 | [界面建议](integration/ui.md) | 自绘/平台 UI、按钮状态、暂停与移动端 |
+| 处理失败 | [异常与恢复](integration/recovery.md) | 登录、交易、存档与幂等重试 |
+| 准备交付 | [功能验收](integration/acceptance.md) | 可操作测试清单和证据要求 |
+
+登录、商品、排行榜、广告和存档分别有独立 Skill，可从左侧“功能接入”直接阅读。每页提供 Markdown；离线包用于 AI 按需读取。[SDK 在 GitHub 获取](https://github.com/GrayArchimage/ineed-creator-skills/tree/main/ineed-creator/skills/engines/godot)。
+
 ## 平台关键限制
 
 | 存储总量 | Godot 解码总量 | 有效资源数 |

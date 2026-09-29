@@ -23,6 +23,7 @@ pages={p.resolve():Page(p.read_text()) for p in site.glob('*.html')}
 for path,page in pages.items():
  assert page.h1==1,path
  assert len(''.join(page.article_text).strip())>100,path
+ assert '../' not in ''.join(page.article_text), f'Unfriendly visible relative path: {path.name}'
  for ref in page.refs:
   u=urlsplit(ref)
   if u.scheme or ref.startswith('/'):continue

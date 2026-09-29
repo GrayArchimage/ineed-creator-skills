@@ -3,7 +3,7 @@
   "repository": "https://github.com/GrayArchimage/ineed-creator-skills",
   "groups": [
     {
-      "title": "开始使用",
+      "title": "快速开始",
       "pages": [
         {
           "slug": "index",
@@ -16,6 +16,12 @@
           "title": "快速开始",
           "source": "guides/getting-started.md",
           "description": "从识别项目到导出验证。"
+        },
+        {
+          "slug": "support",
+          "title": "能力与支持边界",
+          "source": "guides/integration/support.md",
+          "description": "哪些能力可用，哪些仍需平台配置或源工程绑定。"
         },
         {
           "slug": "creator-skill",
@@ -45,11 +51,29 @@
           "title": "Godot 单线程 Web",
           "source": "skills/engines/godot/SKILL.md",
           "description": "GDScript 插件、事件绑定与导出。"
+        },
+        {
+          "slug": "development-workflow",
+          "title": "完整开发流程",
+          "source": "guides/integration/workflow.md",
+          "description": "从工程识别、创作者提问到配置交接和验收。"
+        },
+        {
+          "slug": "godot-api",
+          "title": "Godot 接口手册",
+          "source": "guides/integration/api.md",
+          "description": "实际函数、参数、返回值及购买与消耗调用。"
+        },
+        {
+          "slug": "game-ui",
+          "title": "界面与交互建议",
+          "source": "guides/integration/ui.md",
+          "description": "游戏自绘和平台界面、登录暂停及移动端体验。"
         }
       ]
     },
     {
-      "title": "平台能力",
+      "title": "功能接入",
       "pages": [
         {
           "slug": "login",
@@ -84,7 +108,7 @@
       ]
     },
     {
-      "title": "打包与导出",
+      "title": "打包与发布",
       "pages": [
         {
           "slug": "packaging",
@@ -133,6 +157,23 @@
           "title": "常见问题",
           "source": "guides/packaging/troubleshooting.md",
           "description": "上传、运行、账号与字体排查。"
+        }
+      ]
+    },
+    {
+      "title": "排错与验收",
+      "pages": [
+        {
+          "slug": "recovery",
+          "title": "异常与恢复",
+          "source": "guides/integration/recovery.md",
+          "description": "账号切换、交易未知结果、重试与排错线索。"
+        },
+        {
+          "slug": "integration-checklist",
+          "title": "功能验收",
+          "source": "guides/integration/acceptance.md",
+          "description": "两种界面、三种商业调用、真实与模拟验收。"
         }
       ]
     },

@@ -29,3 +29,16 @@ python3 -m http.server 18772 --bind 127.0.0.1 --directory site
 输出 `site/` 可部署到静态服务器；所有站内链接相对寻址。需要换正式域名时修改 `docs-nav.json` 的 `baseUrl` 后重建，不能只搬文件而留下错误 canonical / sitemap。完整包下载沿用平台公开下载地址，历史固定包见 GitHub Release。
 
 平台维护者还需运行 `scripts/check_platform_policy.py <平台仓库>` 检查格式与容量契约，再执行 `scripts/vendor_platform.py <平台仓库>` 固定附带同一制品。仅复制脚本不会部署；平台上线继续走既有 Jenkins 发布流程。新增文档保持旧 URL 和锚点可用；必要时添加兼容页/重定向，不能因整理目录直接删除已发布链接。
+
+## 开发文档与 SDK
+
+- [Godot 接口手册](https://ineeds.club/creator-skills/godot-api.html)：参数、返回值、购买与消耗包装器。
+- [完整开发流程](https://ineeds.club/creator-skills/development-workflow.html)：工程检查、提问清单、界面分工与平台交接。
+- [商品购买与消耗](https://ineeds.club/creator-skills/payments.html)：未登录先登录、只购买、只消耗、组合流程和失败恢复。
+- [插件源代码](ineed-creator/skills/engines/godot/plugin/ineed.gd)；[最小工程](ineed-creator/skills/engines/godot/example)。
+
+插件商业流程测试（隔离内存夹具，不连接线上）：
+
+```sh
+godot --headless --path ineed-creator/skills/engines/godot/example --script "$PWD/scripts/test_godot_commerce.gd"
+```
