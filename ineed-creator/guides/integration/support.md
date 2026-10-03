@@ -12,6 +12,7 @@ SDK 是游戏和平台的通信入口。完成插件安装、游戏事件绑定�
 | 永久权益 | payments.entitlements | 使用服务端权益；不能用消耗品库存模拟永久拥有 |
 | 排行榜 | leaderboards.list/get/submit/profile/region、ui.leaderboard | 平台配置榜单；游戏绑定开局和结算，明确分数及耗时 |
 | 激励广告 | ads.rewarded | 作品启用广告位、可信供应商和完成验证；游戏绑定动作和奖励处理 |
+| 双人实时联机 | 独立 INeedConnection 实时插件的 start_game / game_ready | 平台按作品启用匹配/信令/TURN；游戏提供本地联机玩法、RPC、同步与权威判定，见[实时联机](../../skills/capabilities/realtime/SKILL.md) |
 | 存档 | storage.load、storage.save | 游戏选择 JSON 字段、格式版本及冲突策略；登录后使用账号云档 |
 
 初始化后，使用完整方法名查询 `INeed.supports("ads.rewarded")`。true 表示本会话公布此方法，不保证某个商品或广告位有效，也不保证玩家已经登录或拥有库存。最终仍以调用结果为准。
@@ -26,10 +27,12 @@ account.get、商品、权益和库存读取当前 SDK 会话快照；支付/消
 
 ## 暂未提供的桥接能力
 
-当前 Godot v1 没有公开通用多人联机、任意 AI 调用、订单查询/退款、客户端商品创建或管理后台接口。底层 JavaScript 平台存在其他能力，不代表 Godot 可直接调用。需求交给平台开发者登记方法、权限、返回结构和兼容范围后再接入；不能虚构方法名。
+双人随机匹配、联机大厅和邀请已由独立实时插件提供；不是 INeed.request 的通用任意网络接口。超过双人的通用联机、任意 AI 调用、订单查询/退款、客户端商品创建或管理后台接口尚未提供。底层 JavaScript 平台存在其他能力，不代表 Godot 可直接调用。需求交给平台开发者登记方法、权限、返回结构和兼容范围后再接入；不能虚构方法名。
 
 ## 哪些更新不需要重新打包
 
 已绑定标识的商品配置、平台认证/界面、广告供应商和服务实现可由平台更新；已打开页面的运行时版本固定，新会话选择兼容版本。新增游戏按钮、奖励应用位置、真实开局事件、玩法和自绘 UI 仍需要源工程修改并重新导出。SDK 不会自动接管全部 user:// 文件。
 
 [继续：完整开发流程](workflow.md) · [查看接口](api.md) · [获取 SDK](https://github.com/GrayArchimage/ineed-creator-skills/tree/main/ineed-creator/skills/engines/godot)
+
+普通游戏展示广告使用[可选事件适配层](display-ads.md)，由平台按作品启用；不属于激励广告，也不改变支付结果。

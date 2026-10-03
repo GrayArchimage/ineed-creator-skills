@@ -11,3 +11,5 @@ description: 接入普通静态网页的 iNeed 平台能力。
 ## 交付给平台
 
 按 [与 iNeed 沟通](../../platform-handoff/SKILL.md) 输出配置交接单和实际入口测试步骤。标识尚未绑定时明确列为待办；平台配置不自动补写游戏事件。
+
+开始先收集用户目标和能力选择；本地完成后按 [完整交接流程](../../../guides/integration/handoff-workflow.md) 生成可复制发布说明，并明确提醒上传后粘贴到作品的平台聊天。实时联网按 [实时联机](../../capabilities/realtime/SKILL.md) 判断当前宿主支持，不默认全开。

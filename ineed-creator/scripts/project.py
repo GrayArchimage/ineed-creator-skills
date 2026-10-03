@@ -34,7 +34,7 @@ def install(target):
         else:text+='\n[autoload]\n\n'+registration+'\n'
         project.write_text(text)
     plugin.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,plugin)
-    report={'pluginVersion':'0.1.1','protocol':1,'autoload':'INeed','pluginSha256':hashlib.sha256(plugin.read_bytes()).hexdigest(),'pending':['Bind real game start/end/save/pause events','Confirm product, leaderboard and reward placement settings','Choose game UI or platform UI; default platform','Export and test both data and platform UI paths']}
+    report={'pluginVersion':'0.1.2','protocol':1,'autoload':'INeed','pluginSha256':hashlib.sha256(plugin.read_bytes()).hexdigest(),'pending':['Bind real game start/end/save/pause events','Confirm product, leaderboard and reward placement settings','Choose game UI or platform UI; default platform','Export and test both data and platform UI paths']}
     (target/'ineed-integration-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     return report
 if __name__=='__main__':

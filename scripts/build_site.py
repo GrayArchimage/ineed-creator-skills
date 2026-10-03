@@ -19,7 +19,7 @@ for p in OUT.iterdir():
 (OUT/'downloads').mkdir();(OUT/'raw').mkdir()
 shutil.copytree(ROOT/'web/assets',OUT/'assets')
 for p in SOURCE.rglob('*'):
- if p.is_file() and (p.suffix=='.md' or p.name in ['catalog.json','policy.json']):
+ if p.is_file() and (p.suffix=='.md' or p.name in ['catalog.json','policy.json','hosted_display_ads.gd']):
   target=OUT/'raw'/p.relative_to(SOURCE);target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,target)
 for name in ['ineed-creator-markdown.zip','markdown-manifest.json','manifest.json','SHA256SUMS']:
  shutil.copyfile(ROOT/'dist'/name,OUT/'downloads'/name)

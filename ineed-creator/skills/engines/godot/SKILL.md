@@ -76,3 +76,5 @@ func _ready() -> void:
 ## 交付给平台
 
 输出修改文件、节点/按钮位置、已绑定标识、插件版本、待配置项、测试证据及[配置交接单](../../platform-handoff/SKILL.md)。标明预览模拟与真实服务的差别。保持旧接口、旧语义及旧存档；不因新增需求绕过[兼容性原则](../../../COMPATIBILITY.md)。
+
+联机读取 [实时联机](../../capabilities/realtime/SKILL.md)；本地制作与上传交接使用 [完整交接流程](../../../guides/integration/handoff-workflow.md)。核实源工程与当前上传包相符，不能因名称相同就覆盖新版本。

@@ -34,6 +34,12 @@
           "title": "与 iNeed 沟通",
           "source": "skills/platform-handoff/SKILL.md",
           "description": "商品、登录位置、排行榜及界面分工的配置交接单。"
+        },
+        {
+          "slug": "display-ads",
+          "title": "游戏展示广告",
+          "source": "guides/integration/display-ads.md",
+          "description": "开屏、匹配等待和败局的可选展示事件，Godot helper与无填充、关闭边界。"
         }
       ]
     },
@@ -104,6 +110,12 @@
           "title": "云存档",
           "source": "skills/capabilities/storage/SKILL.md",
           "description": "1 MiB、版本冲突和游客隔离。"
+        },
+        {
+          "slug": "realtime",
+          "title": "实时联机",
+          "source": "skills/capabilities/realtime/README.md",
+          "description": "双人随机匹配、大厅、邀请与 Godot/网页接入分工。"
         }
       ]
     },

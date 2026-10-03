@@ -35,3 +35,5 @@
 “请按 iNeed 创作者 Skill 检查这个 Godot 工程。保留现有游戏界面，接入登录、商品购买/消耗和排行榜。先从代码找入口，只问缺失的价格、数量和规则，输出平台交接单及可上传 ZIP。没有配置的能力明确标记待办，不模拟成功。”
 
 接下来按顺序读[完整开发流程](integration/workflow.md)、[接口手册](integration/api.md)、[界面建议](integration/ui.md)和[功能验收](integration/acceptance.md)。SDK 从[GitHub](https://github.com/GrayArchimage/ineed-creator-skills/tree/main/ineed-creator/skills/engines/godot)获取；固定版本见 Release，不依赖游戏运行时联网下载代码。
+
+上传 ZIP 后，将 AI 生成的整段发布说明复制到该作品的平台聊天。平台回显配置后检查并测试预览，再提交审核；详见 [完整交接流程](integration/handoff-workflow.md)。

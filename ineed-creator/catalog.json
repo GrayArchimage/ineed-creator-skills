@@ -1,12 +1,12 @@
 {
-  "version": "0.1.5",
+  "version": "0.3.2",
   "status": "preview",
   "protocol": {
     "major": 1,
     "min": 1,
     "max": 1
   },
-  "pluginVersion": "0.1.1",
+  "pluginVersion": "0.1.2",
   "engines": {
     "web": true,
     "godot": {
@@ -24,7 +24,8 @@
     "payments",
     "leaderboards",
     "rewarded-ads",
-    "storage"
+    "storage",
+    "realtime"
   ],
   "limits": {
     "storedBytes": 52428800,
@@ -34,5 +35,6 @@
     "maxFiles": 500,
     "godotExpandedFileBytes": 134217728,
     "maxPathCharacters": 240
-  }
+  },
+  "realtimePluginVersion": "0.2.1"
 }

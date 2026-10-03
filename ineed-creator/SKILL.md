@@ -21,3 +21,6 @@ description: 为 iNeed 托管网页和 Godot 游戏检查、接入登录支付�
 6. 上传前或平台能力修改后，必读 [与 iNeed 沟通](skills/platform-handoff/SKILL.md)，输出包含真实入口、平台标识、必填/选填、原始备注、待确认项及测试步骤的交接单。
 
 能力不存在、配置未审批、真实广告供应商未接通、只有模拟测试时必须明确报告；不能用 mock 成功替代线上验收。公开技能不得包含内部审核权限或生产运维流程。
+
+联机需求读取 [实时联机](skills/capabilities/realtime/SKILL.md)。
+开始制作与交付前阅读 [本地到平台聊天](guides/integration/handoff-workflow.md)：收集意图、按标准制作、生成可粘贴发布说明，并提醒上传后发送给对应作品的平台聊天。

@@ -1,7 +1,7 @@
 extends Node
 ## Stable JSON-only bridge. Keep callback references alive for the node lifetime.
 signal platform_event(name: String, data: Dictionary)
-const PLUGIN_VERSION := "0.1.1"
+const PLUGIN_VERSION := "0.1.2"
 var _bridge: JavaScriptObject
 var _event_callback: JavaScriptObject
 var _callbacks: Dictionary = {}
@@ -52,6 +52,72 @@ func request(method: String, params: Dictionary = {}) -> Dictionary:
 		await get_tree().process_frame
 	_callbacks.erase(id)
 	return state.result if state.done else _error("TIMEOUT", "Platform request timed out; verify status before retrying")
+
+## Read-only helpers preserve the protocol result envelope, including errors.
+func get_account() -> Dictionary:
+	return await _supported_request("account.get")
+
+## Guests get the supplied display label; reading a name never opens login.
+func get_user_name(fallback: String = "玩家") -> Dictionary:
+	var result := await get_account()
+	if not result.get("ok", false): return result
+	var account: Variant = result.get("value")
+	if not account is Dictionary: return {"ok": true, "value": fallback}
+	var nickname := str(account.get("nickname", "")).strip_edges()
+	var username := str(account.get("username", "")).strip_edges()
+	return {"ok": true, "value": nickname if not nickname.is_empty() else (username if not username.is_empty() else fallback)}
+
+func get_products() -> Dictionary:
+	return await _supported_request("payments.products")
+
+func get_inventory(product_key: String = "") -> Dictionary:
+	return await _supported_request("payments.inventory", {} if product_key.is_empty() else {"productKey": product_key})
+
+func get_entitlements() -> Dictionary:
+	return await _supported_request("payments.entitlements")
+
+func list_leaderboards() -> Dictionary:
+	return await _read_with_login("leaderboards.list")
+
+func get_leaderboard(board_key: String, scope: String = "world", page: int = 1, page_size: int = 20) -> Dictionary:
+	return await _read_with_login("leaderboards.get", {"boardKey": board_key, "scope": scope, "page": page, "pageSize": page_size})
+
+func get_leaderboard_profile() -> Dictionary:
+	return await _read_with_login("leaderboards.profile")
+
+## Pass the same frozen run on retries; never create a new run here.
+## Supply the account ID captured at run start to reject a switched account.
+func submit_score(frozen_run: Dictionary, expected_account_id: String) -> Dictionary:
+	if not supports("leaderboards.submit"):
+		return _error("UNSUPPORTED", "Host does not support leaderboards.submit")
+	if expected_account_id.is_empty():
+		return _error("INVALID_PARAMS", "Capture the account ID at run start")
+	var account := await ensure_logged_in()
+	if not account.get("ok", false): return account
+	if str(account.value.get("id", "")) != expected_account_id:
+		return _error("ACCOUNT_CHANGED", "This run belongs to another account")
+	return await request("leaderboards.submit", frozen_run.duplicate(true))
+
+func set_leaderboard_region(country_code: String, province_code: String, city_code: String = "") -> Dictionary:
+	if not supports("leaderboards.region"):
+		return _error("UNSUPPORTED", "Host does not support leaderboards.region")
+	var account := await ensure_logged_in()
+	if not account.get("ok", false): return account
+	var params := {"countryCode": country_code, "provinceCode": province_code}
+	if not city_code.is_empty(): params["cityCode"] = city_code
+	return await request("leaderboards.region", params)
+
+func _supported_request(method: String, params: Dictionary = {}) -> Dictionary:
+	if not supports(method): return _error("UNSUPPORTED", "Host does not support " + method)
+	return await request(method, params)
+
+## Only read operations may retry after authentication, once, with identical params.
+func _read_with_login(method: String, params: Dictionary = {}) -> Dictionary:
+	var result := await _supported_request(method, params)
+	if result.get("ok", false) or result.get("error", {}).get("code", "") != "AUTH_REQUIRED": return result
+	var account := await ensure_logged_in()
+	if not account.get("ok", false): return account
+	return await request(method, params)
 
 func login() -> Dictionary:
 	return await request("login")

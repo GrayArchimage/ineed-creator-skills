@@ -1,6 +1,6 @@
 # Godot 接口手册
 
-适用插件 0.1.1、协议 v1（既有 request 方法仍兼容 0.1.0）；本文对照平台运行时 1.0.1。最新方法是否可用以当前会话协商为准。[SDK 与源码](https://github.com/GrayArchimage/ineed-creator-skills/tree/main/ineed-creator/skills/engines/godot) · [冻结协议基线](../../protocol-v1.md)。本页为开发参考，不修改旧协议。
+适用插件 0.1.2、协议 v1（既有 request 方法仍兼容 0.1.0）；本文对照平台运行时 1.0.1。最新方法是否可用以当前会话协商为准。[SDK 与源码](https://github.com/GrayArchimage/ineed-creator-skills/tree/main/ineed-creator/skills/engines/godot) · [冻结协议基线](../../protocol-v1.md)。本页为开发参考，不修改旧协议。
 
 ## 调用约定
 
@@ -31,7 +31,7 @@ else:
 | open_leaderboard(board_key, scope = "world") | ui.leaderboard | 平台排行榜窗口 |
 | show_rewarded(placement, action_id) | ads.rewarded | 真实广告与可信结算 |
 
-插件 0.1.1 新增以下包装器；旧 0.1.0 使用 request 接口。没有 INeed.get_account() 简写。
+插件 0.1.1 的包装器继续保留；旧 0.1.0 可使用 request 接口。
 
 | GDScript | 行为 |
 |---|---|
@@ -40,6 +40,37 @@ else:
 | buy_and_consume(product_key, quantity, request_id) | 确保登录，先消费已有库存，不足时购买一次再消费 |
 
 buy 会先确保登录；账号取消或失败时不购买。组合的完整结果、部分成功和幂等恢复见[商品购买与消耗](../../skills/capabilities/payments/SKILL.md)。组合失败可能附加 context.purchase/stage/requestId，原 error 不被隐藏；它不是原子交易。stage=purchase_unknown 表示购买结果待核实，after_purchase 表示已取得购买成功回执。新包装器可返回 PURCHASE_UNCONFIRMED，阻止未知购买结果下再买；这不是新增的远程协议错误。
+
+## 常用数据：插件 0.1.2 简写
+
+初始化一次后，界面直接调用下面的方法，不需要自己构造桥接消息。它们保留 `{ok,value}` / `{ok:false,error}` 结果；读取失败不能伪装成空列表或零库存。
+
+| GDScript | value / 行为 |
+|---|---|
+| get_account() | 账号对象或 null；不弹登录 |
+| get_user_name(fallback = "玩家") | 昵称，空时用 username，再空用 fallback；不弹登录 |
+| get_products() | 商品数组；价格来自平台 |
+| get_inventory(product_key = "") | 全部库存数组，指定 key 则是数量 |
+| get_entitlements() | 永久权益对象 |
+| list_leaderboards() | 对象中的 boards 为可用榜单列表 |
+| get_leaderboard(board_key, scope = "world", page = 1, page_size = 20) | 对象中的 entries 为排名列表，还有 personalBest/personalRank/total 等 |
+| get_leaderboard_profile() | 对象中的 profile |
+| submit_score(frozen_run, expected_account_id) | 需要时自动登录；账号与开局记录不符就停止；原样提交冻结成绩，成功读取 value.receipt |
+| set_leaderboard_region(country_code, province_code, city_code = "") | 需要时登录，提交合法地区代码；不猜测用户位置 |
+
+榜单只读方法先读取；仅服务器返回 AUTH_REQUIRED 时打开登录并重读一次。取消登录直接返回失败。提交、购买、消费没有自动重试；未知结果须核对，不能重复扣款或发奖励。旧平台缺少方法返回 UNSUPPORTED。
+
+```gdscript
+var ready := await INeed.initialize()
+if not ready.get("ok", false): return
+var name_result := await INeed.get_user_name()
+if name_result.get("ok", false): name_label.text = name_result.value
+var ranks := await INeed.get_leaderboard("实际已配置的榜单key")
+if ranks.get("ok", false): render_rows(ranks.value.entries)
+else: show_error(ranks.error)
+```
+
+昵称是显示文本，不能作为账号 ID 或 HTML 执行。动态昵称使用覆盖中文的字体，避免用静态文本子集字体。`account.changed` 后重读并使旧的异步结果失效；不要把上一账号列表显示给下一账号。
 
 ## 账号及购买数据
 
