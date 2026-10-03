@@ -4,13 +4,14 @@ SDK 是游戏和平台的通信入口。完成插件安装、游戏事件绑定�
 
 ## 当前支持表
 
-| 能力 | Godot 方法 | 平台与游戏需要完成什么 |
+| 能力 | SDK 方法或入口 | 平台与游戏需要完成什么 |
 |---|---|---|
 | 账号信息与登录 | account.get、login、account.changed 事件 | 平台认证；游戏更新昵称、头像、库存与存档所属账号 |
 | 商品购买 | payments.products、payments.buy、ui.store | 平台配置 productKey、类型、价格、发放数量；游戏绑定购买入口 |
 | 商品消耗 | payments.inventory、payments.consume | 服务端库存扣减；游戏在真实使用时调用，保存稳定 requestId |
 | 永久权益 | payments.entitlements | 使用服务端权益；不能用消耗品库存模拟永久拥有 |
 | 排行榜 | leaderboards.list/get/submit/profile/region、ui.leaderboard | 平台配置榜单；游戏绑定开局和结算，明确分数及耗时 |
+| 普通展示广告 | ads.show、ads.close；Web/Godot helper | 创作者选择调用与关闭时机；平台登记 placement + type、授权供应商与频控，见[展示广告](display-ads.md) |
 | 激励广告 | ads.rewarded | 作品启用广告位、可信供应商和完成验证；游戏绑定动作和奖励处理 |
 | 双人实时联机 | 独立 INeedConnection 实时插件的 start_game / game_ready | 平台按作品启用匹配/信令/TURN；游戏提供本地联机玩法、RPC、同步与权威判定，见[实时联机](../../skills/capabilities/realtime/SKILL.md) |
 | 存档 | storage.load、storage.save | 游戏选择 JSON 字段、格式版本及冲突策略；登录后使用账号云档 |
@@ -35,4 +36,4 @@ account.get、商品、权益和库存读取当前 SDK 会话快照；支付/消
 
 [继续：完整开发流程](workflow.md) · [查看接口](api.md) · [获取 SDK](https://github.com/GrayArchimage/ineed-creator-skills/tree/main/ineed-creator/skills/engines/godot)
 
-普通游戏展示广告使用[可选事件适配层](display-ads.md)，由平台按作品启用；不属于激励广告，也不改变支付结果。
+普通展示使用[显式 show / close](display-ads.md)。新接入的 placement 授权仅允许游戏主动请求，不自动增加开屏、底栏、失败或重开广告；未迁移旧作品保留既有配置。展示结果不含奖励或支付凭据。

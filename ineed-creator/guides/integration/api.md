@@ -1,6 +1,6 @@
 # Godot 接口手册
 
-适用插件 0.1.2、协议 v1（既有 request 方法仍兼容 0.1.0）；本文对照平台运行时 1.0.1。最新方法是否可用以当前会话协商为准。[SDK 与源码](https://github.com/GrayArchimage/ineed-creator-skills/tree/main/ineed-creator/skills/engines/godot) · [冻结协议基线](../../protocol-v1.md)。本页为开发参考，不修改旧协议。
+适用插件 0.1.2、协议 v1（既有 request 方法仍兼容 0.1.0）；既有方法依据平台运行时 1.0.1；普通展示为能力协商扩展。最新方法是否可用以当前会话协商为准。[SDK 与源码](https://github.com/GrayArchimage/ineed-creator-skills/tree/main/ineed-creator/skills/engines/godot) · [冻结协议基线](../../protocol-v1.md)。本页为开发参考，不修改旧协议。
 
 ## 调用约定
 
@@ -119,6 +119,14 @@ if result.get("ok", false):
     print(receipt.get("personalBest"))
 # 网络重试复用 frozen_run；示例成绩禁止提交正式榜单。
 ```
+
+## 普通展示广告
+
+`ads.show` 接收 `{type: "banner" | "interstitial", placement, requestId, layout?}`；`ads.close` 接收 `{requestId}`。placement 为 1–64 位英文字母、数字或 `_.-`，requestId 为 1–128 位英文字母、数字或 `_:.-`。banner 必须有有效 JSON layout；Godot 的 Control 交给 helper 转换，不能直接传给 request。
+
+Godot 另行 preload `hosted_display_ads.gd`，调用 `await Ads.show(type, placement, request_id, space = null, rotated_clockwise = false, keep_aspect = true)` / `await Ads.close(request_id)`；它不是 INeed Autoload 上新增的简写。Web 使用 `displayAds.show({...})` / `displayAds.close(requestId)`。安装、匹配示例、布局和错误码见[显式展示广告](display-ads.md)。
+
+show 的正常结果 value 为 `{requestId,type,placement,status,shown,reason?}`；status 为 shown/closed/no_fill/cancelled/timeout/skipped。`ok=true` 只表示普通请求被处理，无填充或取消也可为正常结果；不能发奖、解锁商品或视为已支付。新宿主登记 placement + type 授权后仅由游戏显式调用，旧宿主返回 UNSUPPORTED。close 可在加载中调用；早于 show 到达时 value 可仅为 `{requestId,status:"closed",shown:false}`。同 ID 更新 banner 位置不会加载新素材。匹配不能等待广告填充，结束匹配必须 close。
 
 ## 激励广告
 

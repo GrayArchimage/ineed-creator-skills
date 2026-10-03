@@ -1,5 +1,5 @@
 {
-  "version": "0.3.2",
+  "version": "0.3.3",
   "status": "preview",
   "protocol": {
     "major": 1,
@@ -25,7 +25,8 @@
     "leaderboards",
     "rewarded-ads",
     "storage",
-    "realtime"
+    "realtime",
+    "display-ads"
   ],
   "limits": {
     "storedBytes": 52428800,

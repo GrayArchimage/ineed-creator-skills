@@ -1,6 +1,6 @@
 ---
 name: ineed-creator
-description: 为 iNeed 托管网页和 Godot 游戏检查、接入登录支付排行榜激励广告存档并生成上传包；自动识别工程并读取对应子技能。
+description: 为 iNeed 托管网页和 Godot 游戏检查、接入登录支付排行榜展示与激励广告存档并生成上传包；自动识别工程并读取对应子技能。
 ---
 # 创作者入口
 
@@ -14,6 +14,7 @@ description: 为 iNeed 托管网页和 Godot 游戏检查、接入登录支付�
    - [登录](skills/capabilities/login/SKILL.md)
    - [支付](skills/capabilities/payments/SKILL.md)
    - [排行榜](skills/capabilities/leaderboards/SKILL.md)
+   - [普通展示广告](skills/capabilities/ads/SKILL.md)
    - [激励广告](skills/capabilities/rewarded-ads/SKILL.md)
    - [存档](skills/capabilities/storage/SKILL.md)
 4. 先从工程发现开局、结算、保存、暂停及 UI 入口。只询问无法发现的功能选择、商品/奖励含义、榜单规则与界面偏好。推荐游戏自绘 UI；未回答采用平台现成 UI。不得自行定价或决定奖励额度。

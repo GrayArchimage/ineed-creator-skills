@@ -8,6 +8,8 @@ description: 接入普通静态网页的 iNeed 平台能力。
 
 数据模式使用返回结果渲染游戏 UI；平台模式调用 `ui.store`、`ui.leaderboard`。统一返回 envelope，错误必须展示或可重试；支付/奖励不能客户端假造。订阅 `INeedHost.subscribe(callback)` 获取 JSON 文本事件，结束时调用 unsubscribe。
 
+普通广告读取[展示广告 Skill](../../capabilities/ads/SKILL.md)，使用 displayAds.show/close 绑定创作者选择的入口与退出；不自动推断死亡或重开。需要奖励改读[激励广告](../../capabilities/rewarded-ads/SKILL.md)，普通展示结果不能发奖。
+
 ## 交付给平台
 
 按 [与 iNeed 沟通](../../platform-handoff/SKILL.md) 输出配置交接单和实际入口测试步骤。标识尚未绑定时明确列为待办；平台配置不自动补写游戏事件。

@@ -56,6 +56,7 @@ func _ready() -> void:
 - [登录与账号](../../capabilities/login/SKILL.md)：游客入口、登录按钮、账号切换和恢复。
 - [商品购买与消耗](../../capabilities/payments/SKILL.md)：购买增加库存；真实使用才扣减；已有库存不重复购买。
 - [排行榜](../../capabilities/leaderboards/SKILL.md)：真实开局生成 runId，结束冻结成绩，重试复用原数据。
+- [普通展示广告](../../capabilities/ads/SKILL.md)：Ads.show/close 绑定创作者选定的时机；无填充继续，匹配结束关闭整块广告。
 - [激励广告](../../capabilities/rewarded-ads/SKILL.md)：确认平台开通、绑定触发动作、按可信 receipt 去重。
 - [存档](../../capabilities/storage/SKILL.md)：绑定现有保存/读取入口，处理版本与冲突。
 
